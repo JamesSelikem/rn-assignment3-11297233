@@ -1,5 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
+import leftImage from './assets/left-image.jpg'; 
+import rightImage from './assets/right-image.jpg';
+import usericon from './assets/user-icon.jpg';
+import workImage from './assets/work-image.png';
+import hobbiesImage from './assets/hobbies-image.jpg';
+
 
 export default function App() {
   return (
@@ -11,7 +17,7 @@ export default function App() {
         </View>
         <Image
           style={styles.image}
-          source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD-0fXdLj4s3iQVN5404cAxqc89i6g2gCb-Q&s' }} 
+          source={usericon} 
         />
         <TextInput style={styles.input} />
       </View>
@@ -20,7 +26,45 @@ export default function App() {
         placeholder="Search"
         placeholderTextColor="#000"
       />
-      
+      <Text style={styles.category}>Categories</Text>
+      <View style={styles.categoriesContainer}>
+        <View style={styles.leftBox}>
+          <Text style={styles.boxText}>Exercise</Text>
+          <Text style={styles.boxSubText}>12 Tasks</Text>
+          <Image
+            style={styles.boxImage}
+            source={leftImage}
+          />
+        </View>
+        <View style={styles.rightBox}>
+          <Text style={styles.boxText}>Study</Text>
+          <Text style={styles.boxSubText}>12 Tasks</Text>
+          <Image
+            style={styles.boxImage}
+            source={rightImage}
+          />
+        </View>
+      </View>
+      <View style={[styles.categoriesContainer, { top: 471 }]}>
+        <View style={styles.leftBox}>
+          <Text style={styles.boxText}>Work</Text>
+          <Text style={styles.boxSubText}>8 Tasks</Text>
+          <Image
+            style={styles.boxImage}
+            source={workImage}
+          />
+        </View>
+        <View style={styles.rightBox}>
+          <Text style={styles.boxText}>Hobbies</Text>
+          <Text style={styles.boxSubText}>5 Tasks</Text>
+          <Image
+            style={styles.boxImage}
+            source={hobbiesImage}
+          />
+        </View>
+      </View>
+     
+      <Text style={styles.task}>Ongoing Tasks</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -29,7 +73,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F0EDE2',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
@@ -58,8 +102,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 50,
-    height: 52,
+    height: 50,
     marginLeft: 140, 
+    borderRadius: 25,
   },
   input: {
     flex: 1,
@@ -72,11 +117,68 @@ const styles = StyleSheet.create({
     height: 49,
     left: 20,
     top: 150,
-    borderWidth: 1,
+    borderWidth: 0,
+    borderRadius: 12,
     borderColor: '#ccc',
     paddingHorizontal: 10,
     fontSize: 18,
     color: '#000',
+    backgroundColor: '#fff',
+  },
+  category: {
+    fontSize: 20,
+    position: 'absolute',
+    top: 210,
+    left: 20,
+    color: 'black',
+  },
+  categoriesContainer: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 249,
+    left: 20,
+    gap: 0,
+  },
+  leftBox: {
+    width: 186,
+    height: 192,
+    opacity: 1,
+    backgroundColor: '#fff',
+    borderWidth: 0,
+    borderRadius: 10,
+    borderColor: '#ccc',
+    marginRight: 20, 
+  },
+  rightBox: {
+    width: 186,
+    height: 192,
+    opacity: 1,
+    backgroundColor: '#fff',
+    borderWidth: 0,
+    borderRadius: 10,
+    borderColor: '#ccc',
+  },
+  boxText: {
+    fontSize: 16,
+    color: '#000',
+    marginBottom: 2,
+  },
+  boxSubText: {
+    fontSize: 12,
+
+  },
+  boxImage: {
+    width: 160,
+    height: 120,
+  },
+  task: {
+    fontSize: 20,
+    position: 'absolute',
+    top: 700,
+    left: 0, 
+    right: 0, 
+    color: 'black',
+    paddingHorizontal: 20, 
   },
 
 });
